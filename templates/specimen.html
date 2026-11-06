@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-ww-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WUWA UI // 部件规范样张</title>
+  <link rel="stylesheet" href="../assets/wuwa.css">
+</head>
+<body>
+  <div class="ww-background-wave"></div>
+
+  <header class="ww-topbar">
+    <div class="ww-brand">
+      <div class="ww-brand-icon"></div>
+      <div class="ww-brand-title">WUWA SPECIMEN // 声学设计组件展台</div>
+    </div>
+    <button class="ww-btn ww-btn-secondary" id="theme-toggle" style="padding: 4px 12px; font-size: 11px;">
+      切换深浅主题
+    </button>
+  </header>
+
+  <main class="ww-container">
+    <section class="ww-header">
+      <div class="ww-eyebrow">// COMPONENT SPECIFICATION / 组件规范展台</div>
+      <div class="ww-title">部件样式一览</div>
+    </section>
+
+    <!-- 按钮规范 -->
+    <div class="ww-panel">
+      <div class="ww-panel-header">
+        <span class="ww-panel-title">按钮体系 (Buttons)</span>
+      </div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <button class="ww-btn ww-btn-primary">主要操作 (Primary Gold)</button>
+        <button class="ww-btn ww-btn-secondary">次要线框 (Secondary Cyan)</button>
+        <button class="ww-btn ww-btn-danger">危险删除 (Danger Red)</button>
+      </div>
+    </div>
+
+    <!-- 标签规范 -->
+    <div class="ww-panel">
+      <div class="ww-panel-header">
+        <span class="ww-panel-title">频段标签与徽章 (Badges & Tags)</span>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span class="ww-badge ww-badge-gold">衍射 // SPECTRO</span>
+        <span class="ww-badge ww-badge-cyan">冷凝 // GLACIO</span>
+        <span class="ww-freq-tag">FREQ: 96kHz</span>
+        <span style="font-family: var(--ww-font-mono); font-size: 12px; color: var(--ww-text-sub);">[ RESONANCE: 99.1% ]</span>
+      </div>
+    </div>
+
+    <!-- 遥测指标 -->
+    <div class="ww-panel">
+      <div class="ww-panel-header">
+        <span class="ww-panel-title">数据遥测与频谱 (Telemetry & Equalizer)</span>
+      </div>
+      <div class="ww-grid-3">
+        <div class="ww-telemetry">
+          <span class="ww-telemetry-num" data-target="142.8">0</span>
+          <span class="ww-telemetry-unit">MHz 谐振频段</span>
+        </div>
+        <div class="ww-telemetry">
+          <span class="ww-telemetry-num" data-target="99.98%">00.0%</span>
+          <span class="ww-telemetry-unit">波形保真度</span>
+        </div>
+        <div>
+          <span style="font-family: var(--ww-font-mono); font-size: 11px; color: var(--ww-cyan);">LIVE EQUALIZER</span>
+          <div class="ww-spectrum" data-bars="16" style="margin-top: 8px;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="../assets/fx.js"></script>
+</body>
+</html>

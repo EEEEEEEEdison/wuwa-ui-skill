@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-ww-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WUWA UI // 反例与正例对照</title>
+  <link rel="stylesheet" href="../assets/wuwa.css">
+  <style>
+    .demo-box {
+      padding: 16px;
+      border: 1px solid var(--ww-border);
+      background: var(--ww-panel-subtle);
+    }
+    .wrong {
+      border-left: 4px solid var(--ww-danger);
+    }
+    .correct {
+      border-left: 4px solid var(--ww-gold);
+    }
+  </style>
+</head>
+<body>
+  <div class="ww-background-wave"></div>
+
+  <main class="ww-container">
+    <section class="ww-header">
+      <div class="ww-eyebrow">// DESIGN DISCIPLINE / 规范约束</div>
+      <div class="ww-title">做与不做：正反例对照</div>
+    </section>
+
+    <div class="ww-grid-2" style="margin-bottom: 24px;">
+      <div class="demo-box wrong">
+        <div style="color: var(--ww-danger); font-weight: 700; margin-bottom: 8px;">错误：通用赛博朋克大发光与圆角</div>
+        <p style="color: var(--ww-text-sub); margin-bottom: 12px;">滥用强烈的外发光、霓虹光晕和圆形胶囊按钮。</p>
+        <button style="border-radius: 99px; background: cyan; box-shadow: 0 0 20px cyan; border: none; padding: 8px 16px;">发光胶囊按钮</button>
+      </div>
+
+      <div class="demo-box correct">
+        <div style="color: var(--ww-gold); font-weight: 700; margin-bottom: 8px;">正确：声波几何缺口与克制高光</div>
+        <p style="color: var(--ww-text-sub); margin-bottom: 12px;">使用 45° 声学切角与纯平金色填充，不画弥漫发光。</p>
+        <button class="ww-btn ww-btn-primary">声学切角按钮</button>
+      </div>
+    </div>
+
+    <div class="ww-grid-2">
+      <div class="demo-box wrong">
+        <div style="color: var(--ww-danger); font-weight: 700; margin-bottom: 8px;">错误：伪造乱码假科技文本</div>
+        <p style="color: var(--ww-text-sub);">填充毫无业务意义的条形码、无规律二进制串和假英文。</p>
+      </div>
+
+      <div class="demo-box correct">
+        <div style="color: var(--ww-gold); font-weight: 700; margin-bottom: 8px;">正确：使用真实声学频率与业务指标</div>
+        <p style="color: var(--ww-text-sub);">使用真实赫兹 `44.1 kHz`、稳态率 `98.4%`、属性标签 `[ SPECTRO ]`。</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

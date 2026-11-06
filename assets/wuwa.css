@@ -1,0 +1,362 @@
+/* ==========================================================================
+   WUWA UI (鸣潮官方网站风格组件套件)
+   Wuthering Waves Official Design System (Dark & Light)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+:root {
+  /* 深色主题：玄黑与流金 */
+  --ww-bg: #000000;
+  --ww-gold: #C4AC7D;
+  --ww-gold-border: #C9AC67;
+  --ww-gold-title: #DAB67D;
+  --ww-gold-dark: #B5986A;
+  --ww-sand: #D3CBB8;
+  --ww-silver: #E1E1E1;
+  --ww-text-muted: #989898;
+  --ww-surface: rgba(24, 24, 24, 0.7);
+  --ww-surface-solid: #2A2A2A;
+  --ww-surface-card: rgba(33, 33, 33, 0.55);
+  --ww-line: #505050;
+  --ww-line-light: #D2CAB8;
+  --ww-topbar-bg: rgba(0, 0, 0, 0.75);
+  --ww-topbar-border: rgba(210, 202, 184, 0.15);
+  --ww-article-hover: rgba(45, 45, 45, 0.4);
+  --ww-card-shadow: none;
+
+  --ww-font-wide: "Cinzel", "Novecentowide-Medium", "Saira", sans-serif;
+  --ww-font-sans: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html[data-ww-theme="light"], :root[data-ww-theme="light"] {
+  /* 浅色主题：暖象牙纸白、矿砂与沉敛金 */
+  --ww-bg: #F7F5F0;
+  --ww-gold: #B5986A;
+  --ww-gold-border: #C4AC7D;
+  --ww-gold-title: #8E7340;
+  --ww-gold-dark: #A68546;
+  --ww-sand: #70685C;
+  --ww-silver: #242220;
+  --ww-text-muted: #888075;
+  --ww-surface: rgba(255, 255, 255, 0.92);
+  --ww-surface-solid: #FFFFFF;
+  --ww-surface-card: rgba(255, 255, 255, 0.95);
+  --ww-line: #E2DDD2;
+  --ww-line-light: #C4AC7D;
+  --ww-topbar-bg: rgba(247, 245, 240, 0.88);
+  --ww-topbar-border: rgba(196, 172, 125, 0.35);
+  --ww-article-hover: rgba(240, 236, 228, 0.6);
+  --ww-card-shadow: 0 10px 30px rgba(70, 60, 50, 0.05);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--ww-bg);
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(196, 172, 125, 0.12) 0%, transparent 60%);
+  color: var(--ww-silver);
+  font-family: var(--ww-font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 顶部导航 */
+.ww-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  background: var(--ww-topbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ww-topbar-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.ww-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ww-brand-logo {
+  font-family: var(--ww-font-wide);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--ww-silver);
+  text-transform: uppercase;
+}
+
+.ww-brand-badge {
+  font-family: var(--ww-font-wide);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--ww-gold);
+  border: 1px solid var(--ww-gold-border);
+  padding: 2px 8px;
+  border-radius: 0 8px;
+}
+
+.ww-nav {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.ww-nav-item {
+  font-family: var(--ww-font-sans);
+  font-size: 15px;
+  color: var(--ww-silver);
+  cursor: pointer;
+  transition: color 0.25s;
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 6px;
+}
+
+.ww-nav-item:hover, .ww-nav-item.active {
+  color: var(--ww-gold);
+}
+
+.ww-nav-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--ww-gold);
+}
+
+.ww-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+/* 页面大标题 */
+.ww-page-header {
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.ww-page-en {
+  font-family: var(--ww-font-wide);
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--ww-sand);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.ww-page-title {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ww-gold-title);
+  line-height: 1.2;
+}
+
+/* 按钮体系 */
+.ww-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--ww-gold);
+  color: #000000;
+  font-family: var(--ww-font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 0 10px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  text-decoration: none;
+}
+
+html[data-ww-theme="light"] .ww-btn-gold {
+  color: #FFFFFF;
+}
+
+.ww-btn-gold:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.ww-btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--ww-surface-solid);
+  color: var(--ww-silver);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 30px;
+  border-radius: 18px 0;
+  border: none;
+  border-bottom: 3px solid var(--ww-gold);
+  border-right: 3px solid var(--ww-gold);
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, transform 0.2s;
+  text-decoration: none;
+}
+
+.ww-btn-dark:hover {
+  filter: brightness(1.1);
+  border-color: #E2C99A;
+  transform: translateY(-1px);
+}
+
+html[data-ww-theme="light"] .ww-btn-dark {
+  background-color: #242220;
+  color: #FFFFFF;
+}
+
+/* 切换主题按钮 */
+.ww-btn-toggle {
+  background: transparent;
+  border: 1px solid var(--ww-gold-border);
+  color: var(--ww-gold);
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 0 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ww-btn-toggle:hover {
+  background: var(--ww-gold);
+  color: #FFFFFF;
+}
+
+/* 官网卡片 */
+.ww-card-banner {
+  background: var(--ww-surface-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--ww-line);
+  border-bottom: 1px solid var(--ww-line);
+  border-left: 4px solid var(--ww-gold-border);
+  padding: 24px 28px;
+  transition: border-color 0.3s, background 0.3s;
+  margin-bottom: 24px;
+  box-shadow: var(--ww-card-shadow);
+}
+
+.ww-card-banner:hover {
+  border-left-color: var(--ww-gold-title);
+}
+
+/* 资讯与内容容器 */
+.ww-news-box {
+  background: var(--ww-surface);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--ww-line-light);
+  border-bottom: 1px solid var(--ww-line);
+  padding: 24px 32px;
+  box-shadow: var(--ww-card-shadow);
+}
+
+.ww-tab-header {
+  display: flex;
+  gap: 32px;
+  border-bottom: 1px solid var(--ww-line);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.ww-tab-title {
+  font-size: 16px;
+  color: var(--ww-silver);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.ww-tab-title.active {
+  color: var(--ww-gold-dark);
+  font-weight: 700;
+}
+
+.ww-article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--ww-line);
+  cursor: pointer;
+  transition: padding-left 0.25s, color 0.25s, background-color 0.25s;
+}
+
+.ww-article:last-child {
+  border-bottom: none;
+}
+
+.ww-article:hover {
+  padding-left: 8px;
+  background-color: var(--ww-article-hover);
+}
+
+.ww-article:hover .ww-article-title {
+  color: var(--ww-gold);
+}
+
+.ww-article-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ww-tag-pill {
+  font-size: 11px;
+  color: var(--ww-sand);
+  border: 1px solid var(--ww-line-light);
+  border-radius: 10px;
+  padding: 1px 10px;
+  white-space: nowrap;
+}
+
+.ww-article-title {
+  font-size: 15px;
+  color: var(--ww-silver);
+  transition: color 0.2s;
+}
+
+.ww-article-date {
+  font-family: var(--ww-font-wide);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--ww-text-muted);
+}
+
+.ww-grid-cols {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 860px) {
+  .ww-grid-cols {
+    grid-template-columns: 1fr;
+  }
+  .ww-topbar {
+    padding: 14px 20px;
+  }
+}

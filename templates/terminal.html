@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-ww-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《鸣潮》官方网站风味展示 - Wuthering Waves</title>
+  <link rel="stylesheet" href="../assets/wuwa.css?v=2">
+  <script>
+    // 支持通过 URL 参数或点击切换主题
+    const params = new URLSearchParams(window.location.search);
+    const initialTheme = params.get('theme') || 'dark';
+    document.documentElement.setAttribute('data-ww-theme', initialTheme);
+  </script>
+</head>
+<body>
+  <!-- 官网顶部导航 -->
+  <header class="ww-topbar">
+    <div class="ww-brand">
+      <span class="ww-brand-logo">WUTHERING WAVES</span>
+      <span class="ww-brand-badge">OFFICIAL SPEC</span>
+    </div>
+    <nav class="ww-nav">
+      <a class="ww-nav-item active" href="#">首页</a>
+      <a class="ww-nav-item" href="#">资讯</a>
+      <a class="ww-nav-item" href="#">共鸣者</a>
+      <a class="ww-nav-item" href="#">世界</a>
+      <a class="ww-nav-item" href="#">充值中心</a>
+    </nav>
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <button class="ww-btn-toggle" id="theme-btn">切换浅色模式</button>
+      <a href="#" class="ww-btn-gold" style="padding: 6px 18px; font-size: 13px;">
+        立即下载
+      </a>
+    </div>
+  </header>
+
+  <main class="ww-container">
+    <!-- 官网大标题 -->
+    <section class="ww-page-header">
+      <div class="ww-page-en">LATEST INTEL & ANNOUNCEMENTS</div>
+      <h1 class="ww-page-title">漂泊者，欢迎回到今州</h1>
+    </section>
+
+    <!-- 核心网格布局 -->
+    <div class="ww-grid-cols">
+      <!-- 左栏：官方资讯列表 (.article-container 风格) -->
+      <section class="ww-news-box">
+        <div class="ww-tab-header">
+          <span class="ww-tab-title active">最新</span>
+          <span class="ww-tab-title">公告</span>
+          <span class="ww-tab-title">活动</span>
+          <span class="ww-tab-title">新闻</span>
+        </div>
+
+        <div class="ww-article-list">
+          <article class="ww-article">
+            <div class="ww-article-main">
+              <span class="ww-tag-pill">公告</span>
+              <span class="ww-article-title">《鸣潮》全平台公测版本更新说明</span>
+            </div>
+            <time class="ww-article-date">2026.11.06</time>
+          </article>
+
+          <article class="ww-article">
+            <div class="ww-article-main">
+              <span class="ww-tag-pill">活动</span>
+              <span class="ww-article-title">全新共鸣者特许频段开启，专属武器同步登场</span>
+            </div>
+            <time class="ww-article-date">2026.11.02</time>
+          </article>
+
+          <article class="ww-article">
+            <div class="ww-article-main">
+              <span class="ww-tag-pill">新闻</span>
+              <span class="ww-article-title">“乘霄山”区域声学回响探索活动正式开启</span>
+            </div>
+            <time class="ww-article-date">2026.10.28</time>
+          </article>
+
+          <article class="ww-article">
+            <div class="ww-article-main">
+              <span class="ww-tag-pill">公告</span>
+              <span class="ww-article-title">关于索拉等级突破与声骸吸收概率调整公示</span>
+            </div>
+            <time class="ww-article-date">2026.10.22</time>
+          </article>
+
+          <article class="ww-article">
+            <div class="ww-article-main">
+              <span class="ww-tag-pill">资讯</span>
+              <span class="ww-article-title">开发组答谢信：联觉测试反馈与调整计划</span>
+            </div>
+            <time class="ww-article-date">2026.10.15</time>
+          </article>
+        </div>
+      </section>
+
+      <!-- 右栏：官网特色悬浮卡片与经典按钮 -->
+      <aside>
+        <!-- 官网横幅卡片：左粗金边，上下细线 -->
+        <div class="ww-card-banner">
+          <div style="font-family: var(--ww-font-wide); font-size: 11px; color: var(--ww-sand); letter-spacing: 0.15em; margin-bottom: 6px;">
+            SPECIAL EVENT // RESONANCE
+          </div>
+          <h3 style="font-size: 18px; color: var(--ww-gold-title); margin-bottom: 12px; font-weight: 700;">
+            黑海岸深度调查记录
+          </h3>
+          <p style="color: var(--ww-sand); font-size: 13px; line-height: 1.7; margin-bottom: 20px;">
+            漂泊的声波在潮汐中落定。探索沉睡于风暴眼中的真相，解锁全新声骸异象。
+          </p>
+
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <!-- 官网经典深色按钮：对角圆角 18px 0 + 底部和右侧粗金边 -->
+            <button class="ww-btn-dark">
+              查看调查报告
+            </button>
+            <!-- 官网经典流金按钮：对角圆角 0 10px -->
+            <button class="ww-btn-gold">
+              立即前往
+            </button>
+          </div>
+        </div>
+
+        <!-- 官网系统状态小卡片 -->
+        <div style="background: var(--ww-surface-card); border: 1px solid var(--ww-line); padding: 20px; border-radius: 0 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span style="font-family: var(--ww-font-wide); font-size: 11px; color: var(--ww-sand); letter-spacing: 0.1em;">SYSTEM MONITOR</span>
+            <span style="color: var(--ww-gold); font-size: 11px; font-weight: 700;">ONLINE</span>
+          </div>
+          <p style="font-size: 12px; color: var(--ww-text-muted); line-height: 1.6;">
+            索拉系统服务器已部署完成。各频段接入通道运行平稳。
+          </p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById('theme-btn');
+    function updateThemeBtn() {
+      const isLight = document.documentElement.getAttribute('data-ww-theme') === 'light';
+      themeBtn.textContent = isLight ? '切换深色模式' : '切换浅色模式';
+    }
+    updateThemeBtn();
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-ww-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-ww-theme', next);
+      updateThemeBtn();
+    });
+  </script>
+</body>
+</html>
+
