@@ -61,30 +61,31 @@ ${paths}</g>
   console.log(`Generated ${file} (${(svg.length / 1024).toFixed(1)} KB)`);
 }
 
-// Wave A: Primary Resonance Frequency (Spectro Gold & Acoustic Slate)
+// Colors follow assets/tokens.json: champagne gold, warm sand and the silver hairline.
+// Wave A: three slow ripples for page backgrounds.
 buildWaveSvg('wave-a.svg', 1000, 300, [
   {
     harmonics: [{ freq: 2, amp: 55, phase: 0 }, { freq: 5, amp: 22, phase: 1.2 }, { freq: 11, amp: 8, phase: 0.5 }],
-    color: '#E5B842', width: 1.5, opacity: 0.45, points: 150
+    color: '#C4AC7D', width: 1.5, opacity: 0.4, points: 150
   },
   {
     harmonics: [{ freq: 2, amp: 48, phase: 0.2 }, { freq: 4, amp: 18, phase: 1.8 }],
-    color: '#F0C048', width: 1.0, opacity: 0.3, points: 120
+    color: '#D3CBB8', width: 1.0, opacity: 0.25, points: 120
   },
   {
     harmonics: [{ freq: 3, amp: 65, phase: 2.1 }, { freq: 7, amp: 15, phase: 0.8 }],
-    color: '#8C96A6', width: 0.8, opacity: 0.25, points: 120
+    color: '#505050', width: 0.8, opacity: 0.5, points: 120
   }
 ]);
 
-// Wave B: Secondary Glacio Frequency (Glacial Cyan & Harmonic Pulse)
+// Wave B: two quieter ripples for section dividers.
 buildWaveSvg('wave-b.svg', 800, 240, [
   {
     harmonics: [{ freq: 3, amp: 42, phase: 0 }, { freq: 6, amp: 16, phase: 1.5 }, { freq: 13, amp: 6, phase: 2.0 }],
-    color: '#36E2D5', width: 1.2, opacity: 0.5, points: 140
+    color: '#C9AC67', width: 1.2, opacity: 0.35, points: 140
   },
   {
     harmonics: [{ freq: 1.5, amp: 35, phase: 0.8 }, { freq: 4.5, amp: 12, phase: 2.4 }],
-    color: '#8C96A6', width: 0.8, opacity: 0.2, points: 100
+    color: '#D3CBB8', width: 0.8, opacity: 0.2, points: 100
   }
 ]);

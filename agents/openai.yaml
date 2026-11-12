@@ -1,4 +1,4 @@
 name: wuwa-ui
-title: 鸣潮风味声学终端 UI
-description: 构建《鸣潮》联觉终端风格的界面（深黑碳底、共鸣金高亮、声学切角、示波器波形）
-color: "#E5B842"
+title: 鸣潮官网风格 UI
+description: 构建《鸣潮》官网风格的网页与 WPF 桌面界面（玄黑底、哑光流金、对角圆角、非对称金边、细线分区）
+color: "#C4AC7D"

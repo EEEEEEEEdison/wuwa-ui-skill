@@ -3,75 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WUWA UI // 部件规范样张</title>
+  <title>WUWA UI 部件样张</title>
   <link rel="stylesheet" href="../assets/wuwa.css">
+  <script>
+    // ?theme=light 用于截图检查
+    const theme = new URLSearchParams(location.search).get('theme');
+    if (theme) document.documentElement.setAttribute('data-ww-theme', theme);
+  </script>
+  <style>
+    .specimen-grid { display: grid; grid-template-columns: 220px 1fr; gap: 32px; }
+    .specimen-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 32px; }
+    .specimen-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; max-width: 640px; }
+    @media (max-width: 860px) { .specimen-grid, .specimen-form { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
-  <div class="ww-background-wave"></div>
-
   <header class="ww-topbar">
     <div class="ww-brand">
-      <div class="ww-brand-icon"></div>
-      <div class="ww-brand-title">WUWA SPECIMEN // 声学设计组件展台</div>
+      <span class="ww-brand-logo">Specimen</span>
     </div>
-    <button class="ww-btn ww-btn-secondary" id="theme-toggle" style="padding: 4px 12px; font-size: 11px;">
-      切换深浅主题
-    </button>
+    <button class="ww-btn-toggle" data-ww-theme-toggle>切换浅色主题</button>
   </header>
 
   <main class="ww-container">
-    <section class="ww-header">
-      <div class="ww-eyebrow">// COMPONENT SPECIFICATION / 组件规范展台</div>
-      <div class="ww-title">部件样式一览</div>
+    <section class="ww-page-header">
+      <div class="ww-page-en">Component Specimen</div>
+      <h1 class="ww-page-title">部件样张</h1>
     </section>
 
-    <!-- 按钮规范 -->
-    <div class="ww-panel">
-      <div class="ww-panel-header">
-        <span class="ww-panel-title">按钮体系 (Buttons)</span>
-      </div>
-      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-        <button class="ww-btn ww-btn-primary">主要操作 (Primary Gold)</button>
-        <button class="ww-btn ww-btn-secondary">次要线框 (Secondary Cyan)</button>
-        <button class="ww-btn ww-btn-danger">危险删除 (Danger Red)</button>
-      </div>
-    </div>
+    <div class="specimen-grid">
+      <nav class="ww-sidenav" aria-label="样张导航">
+        <a class="ww-sidenav-item active" href="#buttons">按钮</a>
+        <a class="ww-sidenav-item" href="#states">状态</a>
+        <a class="ww-sidenav-item" href="#forms">表单</a>
+        <a class="ww-sidenav-item" href="#tables">数据表</a>
+      </nav>
 
-    <!-- 标签规范 -->
-    <div class="ww-panel">
-      <div class="ww-panel-header">
-        <span class="ww-panel-title">频段标签与徽章 (Badges & Tags)</span>
-      </div>
-      <div style="display: flex; gap: 12px; align-items: center;">
-        <span class="ww-badge ww-badge-gold">衍射 // SPECTRO</span>
-        <span class="ww-badge ww-badge-cyan">冷凝 // GLACIO</span>
-        <span class="ww-freq-tag">FREQ: 96kHz</span>
-        <span style="font-family: var(--ww-font-mono); font-size: 12px; color: var(--ww-text-sub);">[ RESONANCE: 99.1% ]</span>
-      </div>
-    </div>
+      <div>
+        <section id="buttons">
+          <div class="ww-section-head">
+            <span class="ww-section-title">按钮层级</span>
+          </div>
+          <div class="specimen-row">
+            <button class="ww-btn-gold">开始</button>
+            <button class="ww-btn-dark">查看记录</button>
+            <button class="ww-btn-ghost">刷新</button>
+            <button class="ww-btn-danger">删除</button>
+            <button class="ww-btn-ghost" disabled>不可用</button>
+          </div>
+        </section>
 
-    <!-- 遥测指标 -->
-    <div class="ww-panel">
-      <div class="ww-panel-header">
-        <span class="ww-panel-title">数据遥测与频谱 (Telemetry & Equalizer)</span>
-      </div>
-      <div class="ww-grid-3">
-        <div class="ww-telemetry">
-          <span class="ww-telemetry-num" data-target="142.8">0</span>
-          <span class="ww-telemetry-unit">MHz 谐振频段</span>
-        </div>
-        <div class="ww-telemetry">
-          <span class="ww-telemetry-num" data-target="99.98%">00.0%</span>
-          <span class="ww-telemetry-unit">波形保真度</span>
-        </div>
-        <div>
-          <span style="font-family: var(--ww-font-mono); font-size: 11px; color: var(--ww-cyan);">LIVE EQUALIZER</span>
-          <div class="ww-spectrum" data-bars="16" style="margin-top: 8px;"></div>
-        </div>
+        <section id="states">
+          <div class="ww-section-head">
+            <span class="ww-section-title">运行状态</span>
+          </div>
+          <div class="ww-card-banner">
+            <div class="specimen-row" style="margin-bottom: 0;">
+              <span class="ww-status is-active">运行中</span>
+              <span class="ww-status is-ok">已连接</span>
+              <span class="ww-status is-warn">等待权限</span>
+              <span class="ww-status is-danger">运行失败</span>
+              <span class="ww-status">已停止</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="forms">
+          <div class="ww-section-head">
+            <span class="ww-section-title">表单</span>
+          </div>
+          <div class="specimen-form">
+            <label class="ww-field">
+              <span class="ww-field-label">程序路径</span>
+              <input class="ww-input" value="D:\Games\App.exe">
+              <span class="ww-field-help">留空时自动查找。</span>
+            </label>
+            <label class="ww-field">
+              <span class="ww-field-label">采集模式</span>
+              <select class="ww-select"><option>自动</option><option>HDR</option></select>
+            </label>
+          </div>
+          <div class="specimen-row">
+            <label class="ww-check"><input type="checkbox" checked>自动锁定目标</label>
+            <label class="ww-check"><input type="checkbox">启动时开启服务</label>
+          </div>
+        </section>
+
+        <section id="tables">
+          <div class="ww-section-head">
+            <span class="ww-section-title">数据表</span>
+            <button class="ww-btn-ghost">刷新</button>
+          </div>
+          <table class="ww-table">
+            <thead><tr><th>名称</th><th>状态</th><th>修改时间</th></tr></thead>
+            <tbody>
+              <tr aria-selected="true"><td>配置 A</td><td><span class="ww-status is-ok">已同步</span></td><td class="ww-article-date">2026.11.06</td></tr>
+              <tr><td>配置 B</td><td><span class="ww-status">未同步</span></td><td class="ww-article-date">2026.11.02</td></tr>
+            </tbody>
+          </table>
+          <div class="ww-empty">没有匹配的记录。请修改筛选条件。</div>
+        </section>
       </div>
     </div>
   </main>
 
-  <script type="module" src="../assets/fx.js"></script>
+  <script src="../assets/fx.js" defer></script>
 </body>
 </html>

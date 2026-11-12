@@ -3,54 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WUWA UI // 反例与正例对照</title>
+  <title>WUWA UI 正反例</title>
   <link rel="stylesheet" href="../assets/wuwa.css">
+  <script>
+    // ?theme=light 用于截图检查
+    const theme = new URLSearchParams(location.search).get('theme');
+    if (theme) document.documentElement.setAttribute('data-ww-theme', theme);
+  </script>
   <style>
-    .demo-box {
-      padding: 16px;
-      border: 1px solid var(--ww-border);
-      background: var(--ww-panel-subtle);
-    }
-    .wrong {
-      border-left: 4px solid var(--ww-danger);
-    }
-    .correct {
-      border-left: 4px solid var(--ww-gold);
-    }
+    .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .demo { padding: 20px; border-top: 1px solid var(--ww-line); border-bottom: 1px solid var(--ww-line); }
+    .demo.wrong { border-left: 4px solid var(--ww-danger); }
+    .demo.right { border-left: 4px solid var(--ww-gold); }
+    .demo-label { font-weight: 700; margin-bottom: 8px; }
+    .wrong .demo-label { color: var(--ww-danger); }
+    .right .demo-label { color: var(--ww-gold-text); }
+    .demo p { color: var(--ww-sand); margin-bottom: 14px; }
+    /* 反例只在本页演示，不进入组件库 */
+    .bad-neon { border: none; border-radius: 99px; padding: 8px 18px; background: #36E2D5; box-shadow: 0 0 20px #36E2D5; }
+    .bad-cut { border: none; padding: 9px 20px; background: #E5B842; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+    .bad-box { padding: 16px; background: #2A2A2A; border-radius: 16px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6); color: #E1E1E1; }
+    .bad-gold { background: transparent; border: 1px solid var(--ww-gold-border); color: var(--ww-gold-text); padding: 8px 18px; border-radius: 0 8px; font-weight: 600; margin-right: 8px; }
+    .bad-tiny-en { font-size: 9px; letter-spacing: 0.2em; color: var(--ww-text-muted); margin-top: 2px; }
+    .demo .row { display: flex; gap: 8px; flex-wrap: wrap; }
+    @media (max-width: 860px) { .pairs { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <div class="ww-background-wave"></div>
-
   <main class="ww-container">
-    <section class="ww-header">
-      <div class="ww-eyebrow">// DESIGN DISCIPLINE / 规范约束</div>
-      <div class="ww-title">做与不做：正反例对照</div>
+    <section class="ww-page-header">
+      <div class="ww-page-en">Do and Don't</div>
+      <h1 class="ww-page-title">正反例对照</h1>
     </section>
 
-    <div class="ww-grid-2" style="margin-bottom: 24px;">
-      <div class="demo-box wrong">
-        <div style="color: var(--ww-danger); font-weight: 700; margin-bottom: 8px;">错误：通用赛博朋克大发光与圆角</div>
-        <p style="color: var(--ww-text-sub); margin-bottom: 12px;">滥用强烈的外发光、霓虹光晕和圆形胶囊按钮。</p>
-        <button style="border-radius: 99px; background: cyan; box-shadow: 0 0 20px cyan; border: none; padding: 8px 16px;">发光胶囊按钮</button>
+    <div class="pairs">
+      <div class="demo wrong">
+        <div class="demo-label">不做：霓虹发光与胶囊按钮</div>
+        <p>青色外发光与全圆角胶囊不属于官网的玄黑流金。</p>
+        <button class="bad-neon">发光胶囊</button>
       </div>
-
-      <div class="demo-box correct">
-        <div style="color: var(--ww-gold); font-weight: 700; margin-bottom: 8px;">正确：声波几何缺口与克制高光</div>
-        <p style="color: var(--ww-text-sub); margin-bottom: 12px;">使用 45° 声学切角与纯平金色填充，不画弥漫发光。</p>
-        <button class="ww-btn ww-btn-primary">声学切角按钮</button>
+      <div class="demo right">
+        <div class="demo-label">做：哑光流金与对角圆角</div>
+        <p>主操作用纯平流金，右上与左下圆弧。</p>
+        <button class="ww-btn-gold">开始</button>
       </div>
     </div>
 
-    <div class="ww-grid-2">
-      <div class="demo-box wrong">
-        <div style="color: var(--ww-danger); font-weight: 700; margin-bottom: 8px;">错误：伪造乱码假科技文本</div>
-        <p style="color: var(--ww-text-sub);">填充毫无业务意义的条形码、无规律二进制串和假英文。</p>
+    <div class="pairs">
+      <div class="demo wrong">
+        <div class="demo-label">不做：45° 切角与高饱和黄</div>
+        <p>通用科幻切角与柠檬黄是旧版“终端”写法，已废弃。</p>
+        <button class="bad-cut">切角按钮</button>
       </div>
+      <div class="demo right">
+        <div class="demo-label">做：非对称金边</div>
+        <p>次要按钮用炭黑底，底部与右侧 3px 金边。</p>
+        <button class="ww-btn-dark">查看记录</button>
+      </div>
+    </div>
 
-      <div class="demo-box correct">
-        <div style="color: var(--ww-gold); font-weight: 700; margin-bottom: 8px;">正确：使用真实声学频率与业务指标</div>
-        <p style="color: var(--ww-text-sub);">使用真实赫兹 `44.1 kHz`、稳态率 `98.4%`、属性标签 `[ SPECTRO ]`。</p>
+    <div class="pairs">
+      <div class="demo wrong">
+        <div class="demo-label">不做：厚重灰盒与弥漫投影</div>
+        <div class="bad-box">每个区块都包进带投影的大圆角灰盒，页面变得笨重。</div>
+      </div>
+      <div class="demo right">
+        <div class="demo-label">做：细线分区与左侧金条</div>
+        <div class="ww-section-head" style="margin-bottom: 8px;">
+          <span class="ww-section-title">运行状态</span>
+        </div>
+        <span class="ww-status is-ok">已连接</span>
+      </div>
+    </div>
+
+    <div class="pairs">
+      <div class="demo wrong">
+        <div class="demo-label">不做：用小字做装饰</div>
+        <p>导航英文副标题、段落眉标和徽标小字增加阅读负担。</p>
+        <div>战斗</div>
+        <div class="bad-tiny-en">C O M B A T</div>
+      </div>
+      <div class="demo right">
+        <div class="demo-label">做：中文标题加留白</div>
+        <p>导航与段落标题只写中文，每页最多在页头放一个英文眉标。</p>
+        <div class="ww-section-head" style="margin-bottom: 0;"><span class="ww-section-title">战斗选项</span></div>
+      </div>
+    </div>
+
+    <div class="pairs">
+      <div class="demo wrong">
+        <div class="demo-label">不做：每个按钮都描金边</div>
+        <p>满屏金线让金色失去指向。</p>
+        <div class="row"><button class="bad-gold">保存</button><button class="bad-gold">刷新</button><button class="bad-gold">打开目录</button></div>
+      </div>
+      <div class="demo right">
+        <div class="demo-label">做：金色只给主操作</div>
+        <p>主操作用流金实底，普通操作用中性细线，悬停时才变金。</p>
+        <div class="row"><button class="ww-btn-gold">保存</button><button class="ww-btn-ghost">刷新</button><button class="ww-btn-ghost">打开目录</button></div>
+      </div>
+    </div>
+
+    <div class="pairs">
+      <div class="demo wrong">
+        <div class="demo-label">不做：伪科技乱码</div>
+        <p>“0xA7F3 // SYNC 98.4% // FREQ 44.1kHz”这类与业务无关的数字只是噪音。</p>
+      </div>
+      <div class="demo right">
+        <div class="demo-label">做：真实业务数据</div>
+        <p>写真实的数量、版本和时间，例如“共 69 条”“v0.1.5”“2026.11.06”。</p>
       </div>
     </div>
   </main>

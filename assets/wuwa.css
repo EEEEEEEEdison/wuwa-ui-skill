@@ -1,6 +1,7 @@
 /* ==========================================================================
    WUWA UI (鸣潮官方网站风格组件套件)
    Wuthering Waves Official Design System (Dark & Light)
+   Values follow assets/tokens.json.
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
@@ -11,22 +12,31 @@
   --ww-gold: #C4AC7D;
   --ww-gold-border: #C9AC67;
   --ww-gold-title: #DAB67D;
-  --ww-gold-dark: #B5986A;
+  --ww-gold-text: #C4AC7D;
+  --ww-on-gold: #16130E;
   --ww-sand: #D3CBB8;
   --ww-silver: #E1E1E1;
   --ww-text-muted: #989898;
   --ww-surface: rgba(24, 24, 24, 0.7);
-  --ww-surface-solid: #2A2A2A;
+  --ww-surface-solid: #1A1A1A;
   --ww-surface-card: rgba(33, 33, 33, 0.55);
+  --ww-raised: #2A2A2A;
+  --ww-on-raised: #E1E1E1;
+  --ww-input: #121212;
   --ww-line: #505050;
+  --ww-line-soft: #2E2E2E;
   --ww-line-light: #D2CAB8;
+  --ww-selected: rgba(196, 172, 125, 0.12);
+  --ww-ok: #9DBB86;
+  --ww-warn: #D9A55B;
+  --ww-danger: #E07A6E;
   --ww-topbar-bg: rgba(0, 0, 0, 0.75);
   --ww-topbar-border: rgba(210, 202, 184, 0.15);
   --ww-article-hover: rgba(45, 45, 45, 0.4);
-  --ww-card-shadow: none;
 
   --ww-font-wide: "Cinzel", "Novecentowide-Medium", "Saira", sans-serif;
   --ww-font-sans: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ww-ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
 html[data-ww-theme="light"], :root[data-ww-theme="light"] {
@@ -35,19 +45,27 @@ html[data-ww-theme="light"], :root[data-ww-theme="light"] {
   --ww-gold: #B5986A;
   --ww-gold-border: #C4AC7D;
   --ww-gold-title: #8E7340;
-  --ww-gold-dark: #A68546;
+  --ww-gold-text: #7A6233;
+  --ww-on-gold: #16130E;
   --ww-sand: #70685C;
   --ww-silver: #242220;
-  --ww-text-muted: #888075;
+  --ww-text-muted: #6E665A;
   --ww-surface: rgba(255, 255, 255, 0.92);
   --ww-surface-solid: #FFFFFF;
   --ww-surface-card: rgba(255, 255, 255, 0.95);
-  --ww-line: #E2DDD2;
+  --ww-raised: #242220;
+  --ww-on-raised: #FFFFFF;
+  --ww-input: #FFFFFF;
+  --ww-line: #D2CAB8;
+  --ww-line-soft: #E7E2D7;
   --ww-line-light: #C4AC7D;
+  --ww-selected: rgba(181, 152, 106, 0.16);
+  --ww-ok: #4E7A36;
+  --ww-warn: #8C5B12;
+  --ww-danger: #B0453A;
   --ww-topbar-bg: rgba(247, 245, 240, 0.88);
   --ww-topbar-border: rgba(196, 172, 125, 0.35);
   --ww-article-hover: rgba(240, 236, 228, 0.6);
-  --ww-card-shadow: 0 10px 30px rgba(70, 60, 50, 0.05);
 }
 
 *, *::before, *::after {
@@ -58,7 +76,6 @@ html[data-ww-theme="light"], :root[data-ww-theme="light"] {
 
 body {
   background-color: var(--ww-bg);
-  background-image: radial-gradient(ellipse at 50% 0%, rgba(196, 172, 125, 0.12) 0%, transparent 60%);
   color: var(--ww-silver);
   font-family: var(--ww-font-sans);
   font-size: 14px;
@@ -66,7 +83,12 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+:focus-visible {
+  outline: 1px solid var(--ww-gold);
+  outline-offset: 2px;
 }
 
 /* 顶部导航 */
@@ -82,7 +104,6 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: background 0.3s, border-color 0.3s;
 }
 
 .ww-brand {
@@ -100,16 +121,6 @@ body {
   text-transform: uppercase;
 }
 
-.ww-brand-badge {
-  font-family: var(--ww-font-wide);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  color: var(--ww-gold);
-  border: 1px solid var(--ww-gold-border);
-  padding: 2px 8px;
-  border-radius: 0 8px;
-}
-
 .ww-nav {
   display: flex;
   gap: 36px;
@@ -121,14 +132,14 @@ body {
   font-size: 15px;
   color: var(--ww-silver);
   cursor: pointer;
-  transition: color 0.25s;
+  transition: color 0.2s;
   position: relative;
   text-decoration: none;
   padding-bottom: 6px;
 }
 
 .ww-nav-item:hover, .ww-nav-item.active {
-  color: var(--ww-gold);
+  color: var(--ww-gold-text);
 }
 
 .ww-nav-item.active::after {
@@ -139,6 +150,34 @@ body {
   right: 0;
   height: 3px;
   background: var(--ww-gold);
+}
+
+/* 侧栏导航：桌面工具与后台，选中项左侧 3px 金条 */
+.ww-sidenav {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.ww-sidenav-item {
+  display: block;
+  padding: 11px 14px;
+  border-left: 3px solid transparent;
+  color: var(--ww-silver);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.ww-sidenav-item:hover {
+  color: var(--ww-gold-text);
+}
+
+.ww-sidenav-item.active {
+  color: var(--ww-gold-text);
+  font-weight: 700;
+  border-left-color: var(--ww-gold);
+  background: var(--ww-selected);
 }
 
 .ww-container {
@@ -153,7 +192,7 @@ body {
   position: relative;
 }
 
-.ww-page-en {
+.ww-page-en, .ww-eyebrow {
   font-family: var(--ww-font-wide);
   font-size: 13px;
   letter-spacing: 0.25em;
@@ -170,6 +209,23 @@ body {
   line-height: 1.2;
 }
 
+/* 段落标题：英文眉标 + 中文标题 */
+.ww-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--ww-line);
+}
+
+.ww-section-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ww-silver);
+}
+
 /* 按钮体系 */
 .ww-btn-gold {
   display: inline-flex;
@@ -177,7 +233,7 @@ body {
   justify-content: center;
   gap: 8px;
   background: var(--ww-gold);
-  color: #000000;
+  color: var(--ww-on-gold);
   font-family: var(--ww-font-sans);
   font-weight: 700;
   font-size: 14px;
@@ -187,10 +243,6 @@ body {
   cursor: pointer;
   transition: opacity 0.2s, transform 0.2s;
   text-decoration: none;
-}
-
-html[data-ww-theme="light"] .ww-btn-gold {
-  color: #FFFFFF;
 }
 
 .ww-btn-gold:hover {
@@ -203,8 +255,8 @@ html[data-ww-theme="light"] .ww-btn-gold {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background-color: var(--ww-surface-solid);
-  color: var(--ww-silver);
+  background-color: var(--ww-raised);
+  color: var(--ww-on-raised);
   font-size: 14px;
   font-weight: 700;
   padding: 12px 30px;
@@ -213,7 +265,7 @@ html[data-ww-theme="light"] .ww-btn-gold {
   border-bottom: 3px solid var(--ww-gold);
   border-right: 3px solid var(--ww-gold);
   cursor: pointer;
-  transition: background-color 0.25s, border-color 0.25s, transform 0.2s;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
   text-decoration: none;
 }
 
@@ -223,28 +275,79 @@ html[data-ww-theme="light"] .ww-btn-gold {
   transform: translateY(-1px);
 }
 
-html[data-ww-theme="light"] .ww-btn-dark {
-  background-color: #242220;
-  color: #FFFFFF;
+/* 细线按钮：普通操作，1px 中性细线，悬停变金 */
+.ww-btn-ghost, .ww-btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--ww-line);
+  color: var(--ww-silver);
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 0 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-/* 切换主题按钮 */
 .ww-btn-toggle {
-  background: transparent;
-  border: 1px solid var(--ww-gold-border);
-  color: var(--ww-gold);
   padding: 6px 14px;
-  font-size: 12px;
+  font-size: 13px;
+}
+
+.ww-btn-ghost:hover, .ww-btn-toggle:hover {
+  border-color: var(--ww-gold);
+  color: var(--ww-gold-text);
+}
+
+/* 危险操作：只用文字色与细线，不用大面积红底 */
+.ww-btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--ww-danger);
+  color: var(--ww-danger);
+  padding: 8px 18px;
+  font-size: 13px;
   font-weight: 600;
   border-radius: 0 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color 0.2s;
 }
 
-.ww-btn-toggle:hover {
-  background: var(--ww-gold);
-  color: #FFFFFF;
+.ww-btn-danger:hover {
+  background: var(--ww-selected);
 }
+
+button:disabled, .ww-btn-gold[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 状态：圆点 + 文字，颜色只表示状态 */
+.ww-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ww-silver);
+}
+
+.ww-status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ww-text-muted);
+}
+
+.ww-status.is-ok::before { background: var(--ww-ok); }
+.ww-status.is-warn::before { background: var(--ww-warn); }
+.ww-status.is-danger::before { background: var(--ww-danger); }
+.ww-status.is-active::before { background: var(--ww-gold); }
 
 /* 官网卡片 */
 .ww-card-banner {
@@ -255,9 +358,8 @@ html[data-ww-theme="light"] .ww-btn-dark {
   border-bottom: 1px solid var(--ww-line);
   border-left: 4px solid var(--ww-gold-border);
   padding: 24px 28px;
-  transition: border-color 0.3s, background 0.3s;
+  transition: border-color 0.2s;
   margin-bottom: 24px;
-  box-shadow: var(--ww-card-shadow);
 }
 
 .ww-card-banner:hover {
@@ -271,7 +373,6 @@ html[data-ww-theme="light"] .ww-btn-dark {
   border-top: 1px solid var(--ww-line-light);
   border-bottom: 1px solid var(--ww-line);
   padding: 24px 32px;
-  box-shadow: var(--ww-card-shadow);
 }
 
 .ww-tab-header {
@@ -291,7 +392,7 @@ html[data-ww-theme="light"] .ww-btn-dark {
 }
 
 .ww-tab-title.active {
-  color: var(--ww-gold-dark);
+  color: var(--ww-gold-text);
   font-weight: 700;
 }
 
@@ -302,7 +403,7 @@ html[data-ww-theme="light"] .ww-btn-dark {
   padding: 18px 0;
   border-bottom: 1px solid var(--ww-line);
   cursor: pointer;
-  transition: padding-left 0.25s, color 0.25s, background-color 0.25s;
+  transition: padding-left 0.2s, color 0.2s, background-color 0.2s;
 }
 
 .ww-article:last-child {
@@ -315,7 +416,7 @@ html[data-ww-theme="light"] .ww-btn-dark {
 }
 
 .ww-article:hover .ww-article-title {
-  color: var(--ww-gold);
+  color: var(--ww-gold-text);
 }
 
 .ww-article-main {
@@ -325,10 +426,10 @@ html[data-ww-theme="light"] .ww-btn-dark {
 }
 
 .ww-tag-pill {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--ww-sand);
   border: 1px solid var(--ww-line-light);
-  border-radius: 10px;
+  border-radius: 0 8px;
   padding: 1px 10px;
   white-space: nowrap;
 }
@@ -346,6 +447,112 @@ html[data-ww-theme="light"] .ww-btn-dark {
   color: var(--ww-text-muted);
 }
 
+/* 表单 */
+.ww-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.ww-field-label {
+  font-size: 13px;
+  color: var(--ww-sand);
+}
+
+.ww-field-help {
+  font-size: 13px;
+  color: var(--ww-text-muted);
+}
+
+.ww-input, .ww-select {
+  background: var(--ww-input);
+  color: var(--ww-silver);
+  border: 1px solid var(--ww-line);
+  border-radius: 0 8px;
+  padding: 9px 12px;
+  font: inherit;
+  min-height: 38px;
+  transition: border-color 0.2s;
+}
+
+.ww-input:hover, .ww-select:hover, .ww-input:focus, .ww-select:focus {
+  border-color: var(--ww-gold-border);
+  outline: none;
+}
+
+.ww-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--ww-silver);
+}
+
+.ww-check input {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--ww-line);
+  background: var(--ww-input);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.ww-check input:checked {
+  background: var(--ww-gold);
+  border-color: var(--ww-gold);
+}
+
+.ww-check input:checked::after {
+  content: "";
+  width: 8px;
+  height: 4px;
+  border-left: 2px solid var(--ww-on-gold);
+  border-bottom: 2px solid var(--ww-on-gold);
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+/* 数据表：细线分行，表头小号弱化 */
+.ww-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ww-table th {
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ww-text-muted);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ww-line);
+}
+
+.ww-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--ww-line-soft);
+}
+
+.ww-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.ww-table tbody tr:hover {
+  background: var(--ww-selected);
+}
+
+.ww-table tbody tr[aria-selected="true"] {
+  background: var(--ww-selected);
+  box-shadow: inset 3px 0 0 var(--ww-gold);
+}
+
+.ww-empty {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ww-text-muted);
+}
+
 .ww-grid-cols {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -358,5 +565,15 @@ html[data-ww-theme="light"] .ww-btn-dark {
   }
   .ww-topbar {
     padding: 14px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  .ww-btn-gold:hover, .ww-btn-dark:hover {
+    transform: none;
   }
 }

@@ -19,7 +19,7 @@
 
 ## 2. 几何与边框实测
 
-- 【测】对角圆角矩形：官网标志性形状为对角圆弧（如 `border-radius: 20px 0;` 或 `border-radius: 0 10px;`）。左上与右下圆弧，右上与左下直角。
+- 【测】对角圆角矩形：官网标志性形状为对角圆弧（如 `border-radius: 20px 0;` 或 `border-radius: 0 10px;`）。一组对角为圆弧，另一组对角为直角：`20px 0` 的圆弧在左上与右下，`0 10px` 的圆弧在右上与左下。
 - 【测】非对称金边：按钮常带有单侧或双侧粗金边（如 `border-bottom: 3px solid #C4AC7D; border-right: 3px solid #C4AC7D;`）。
 - 【测】左侧指示金条：如 `.banner` 带有 `border-left: 4px solid #C9AC67;`，上下配 1px 细银线。
 - 【测】极细下划线：标签切换条 `.tab-navi` 仅高 3px，底色为 `#C4AC7D`。
